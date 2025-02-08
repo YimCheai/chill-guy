@@ -16,7 +16,7 @@ public class FadeIn : MonoBehaviour
     void Update()
     {
         Color color = image.color;
-        if(color.a > 0){
+        if(color.a > 0.3){
             color.a -= Fade_speed * Time.deltaTime;
             this.image.color = color;
         }
