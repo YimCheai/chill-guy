@@ -114,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
         Instantiate(NextSceneChanger, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(1f);
         string name = SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetInt("Is"+name, 1);
         SceneManager.LoadScene(name.Remove(name.Length-1) + count);
     }
 }
