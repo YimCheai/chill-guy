@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/LeeSiwoo/Scene/Stage2.unity
     guid: baffb7fa036c239408927a5c50c59e1f
+  - enabled: 1
+    path: Assets/LeeSiwoo/Scene/Stage3.unity
+    guid: 51474415793d4724b976bba2d98707e1
   m_configObjects: {}

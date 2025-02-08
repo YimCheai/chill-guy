@@ -10,7 +10,7 @@ public class MicInput : MonoBehaviour
         if(Microphone.devices.Length > 0)
         {
             //추후 머지 후 PlayerPrefs로 데이터 로드 삽입
-            device = Microphone.devices[0];
+            device = Microphone.devices[PlayerPrefs.GetInt("Micidx")];
             micClip = Microphone.Start(device, true, 1, 44100);
             Debug.Log($"Device : {device}");
         }

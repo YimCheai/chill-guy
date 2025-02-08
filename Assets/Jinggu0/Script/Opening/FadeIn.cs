@@ -19,11 +19,12 @@ public class FadeIn : MonoBehaviour
         if(color.a > 0){
             color.a -= Fade_speed * Time.deltaTime;
             this.image.color = color;
-            Fade_speed += 4 * Time.deltaTime;
+            Fade_speed += 1 * Time.deltaTime;
         }
         else{
-            color.a = 0;
+            color.a = 1;
             this.gameObject.SetActive(false);
+            Fade_speed = 0.25f;
         }
     }
 }

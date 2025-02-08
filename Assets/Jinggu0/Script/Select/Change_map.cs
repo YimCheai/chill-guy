@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Change_map : MonoBehaviour
 {
     public GameObject[] Chillguys = new GameObject[3];
+    public GameObject Error_Prev;
     public Sprite[] maps = new Sprite[3];
     public TextMeshProUGUI title;
     Image image;
@@ -16,9 +18,9 @@ public class Change_map : MonoBehaviour
     {
         image = GetComponent<Image>();
 
-        stage_name[0] = "STAGE-1";
-        stage_name[1] = "STAGE-2";
-        stage_name[2] = "STAGE-3";
+        stage_name[0] = "Stage1";
+        stage_name[1] = "Stage2";
+        stage_name[2] = "Stage3";
     }
 
     // Update is called once per frame
@@ -41,6 +43,19 @@ public class Change_map : MonoBehaviour
     public void Onclick_left(){
         if(selected > 0){
             selected -= 1;
+        }
+    }
+
+    public void Onclick_stage(){
+        if(selected == 0){
+            SceneManager.LoadScene(stage_name[selected]);
+        }
+        else if(PlayerPrefs.GetInt("Is"+stage_name[selected-1]) == 1){
+            SceneManager.LoadScene(stage_name[selected]);
+        }
+        else{
+            Debug.Log("tlqkf");
+            Instantiate(Error_Prev, this.transform.position, Quaternion.identity, this.transform);
         }
     }
 }

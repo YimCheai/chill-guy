@@ -1491,6 +1491,7 @@ MonoBehaviour:
   - {fileID: 1931999652}
   - {fileID: 932658857}
   - {fileID: 670799117}
+  Error_Prev: {fileID: 703715532320593784, guid: aaf23f01b3539a8d1b7d1b75d1bf3be9, type: 3}
   maps:
   - {fileID: 21300000, guid: cde1f5fb2e6d9be7a9eb47b6767a2431, type: 3}
   - {fileID: 21300000, guid: d22fca45c903214eaa4ca5a2997252c2, type: 3}
@@ -1539,7 +1540,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1671401733}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1671401731}
+        m_TargetAssemblyTypeName: Change_map, Assembly-CSharp
+        m_MethodName: Onclick_stage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1671401733
 MonoBehaviour:
   m_ObjectHideFlags: 0

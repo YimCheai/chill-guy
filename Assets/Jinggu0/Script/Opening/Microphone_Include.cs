@@ -20,6 +20,7 @@ public class Microphone_Include : MonoBehaviour
                 Instantiate(Micmenu, new Vector3(0, 0, 0), Quaternion.identity, Content);
             }
             Content.GetComponent<Microphone_setname>().Setname();
+            PlayerPrefs.SetInt("Micidx", 0);
         }
     }
 }
