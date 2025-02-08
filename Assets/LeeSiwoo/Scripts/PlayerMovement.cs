@@ -14,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
     private float Speed;
     [SerializeField]
     private GameObject SaveEffect;
+    [SerializeField]
+    private GameObject NextSceneChanger;
+
+    public int count;
 
     private string PointName;
 
@@ -65,6 +69,10 @@ public class PlayerMovement : MonoBehaviour
         {
             isJump = false;
         }
+        if (collision.gameObject.CompareTag("Spike"))
+        {
+            Death();
+        }
 	}
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -82,8 +90,7 @@ public class PlayerMovement : MonoBehaviour
 			}
 			else if (collision.gameObject.name.Equals("EndCollider"))
 			{
-				PlayerMovement pm = GetComponent<PlayerMovement>();
-				StartCoroutine(_SceneManager.instance.NextSceneChange(_SceneManager.instance.GetCurrentStage() + 1, pm));
+                StartCoroutine(Nigga());
 			}
 		}
 	}
@@ -99,5 +106,14 @@ public class PlayerMovement : MonoBehaviour
         GameDone = false;
         cinemachine.Follow = this.gameObject.transform;
         transform.position = RespawnPos;
+    }
+    private IEnumerator Nigga()
+    {
+        count++;
+        GameDone = true;
+        Instantiate(NextSceneChanger, transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(1f);
+        string name = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(name.Remove(name.Length-1) + count);
     }
 }
