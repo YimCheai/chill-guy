@@ -3,16 +3,14 @@ using UnityEngine.UI;
 
 public class MicInput : MonoBehaviour
 {
-    [SerializeField]
-    private Text decibelText;
-
     private AudioClip micClip;
     private string device;
     void Start()
     {
-        //마이크 장치 확인
+        //마이크 장치 확인(추가 조건 : PlayerPrefs에 오디오 장치 인덱스가 현재 디바이스 배열에 존재하는지 확인)
         if(Microphone.devices.Length > 0)
         {
+            //추후 머지 후 PlayerPrefs로 데이터 로드 삽입
             device = Microphone.devices[1];
             micClip = Microphone.Start(device, true, 1, 44100);
             Debug.Log($"Device : {device}");
@@ -23,17 +21,6 @@ public class MicInput : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (micClip == null) return;
-
-        float loudness = GetDecibel(0.05f);
-        if(decibelText != null)
-        {
-            decibelText.text = "Decibel : " + loudness.ToString("F2") + "DB";
-        }
-    }
     public float GetDecibel(float _ref = 1.0f)
     {
         int sampleSize = 1024;

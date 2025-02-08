@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isJump = false;
 
+    private bool GameDone = false;
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -22,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameDone) return;
         InputHandler();
     }
     void InputHandler()
@@ -39,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         else if(decibel >= 25)
         {
             Debug.Log("Death");
+            GameDone = true;
         }
     }
 	private void OnCollisionEnter2D(Collision2D collision)

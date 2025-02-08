@@ -18,5 +18,5 @@ public class DecibelBar : MonoBehaviour
 	void Update()
     {
         bar.value = micInput.GetDecibel(0.05f);
-    }
+    }   
 }
