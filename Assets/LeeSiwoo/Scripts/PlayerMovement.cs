@@ -32,18 +32,18 @@ public class PlayerMovement : MonoBehaviour
     void InputHandler()
     {
         float decibel = micInput.GetDecibel(_ref);
-        if (decibel >= 10 && decibel < 20)
+        if (decibel >= 7 && decibel < 15)
         {
             animator.SetBool("isMove", true);
             rigid.AddForce(Vector3.right * 1.1f, ForceMode2D.Force); return;
         }
-        else if(decibel >= 20 &&  decibel < 25 && !isJump)
+        else if(decibel >= 15 &&  decibel < 20 && !isJump)
         {
             rigid.AddForce(Vector3.up * 9, ForceMode2D.Impulse);
             isJump = true;
             return;
         }
-        else if(decibel >= 25)
+        else if(decibel >= 20)
         {
             Death();
             return;
