@@ -8,6 +8,7 @@ TagManager:
   - Col
   - SavePoint
   - Bar
+  - Spike
   layers:
   - Default
   - TransparentFX
