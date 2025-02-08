@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Jinggu0/Scenes/Opening Scenes.unity
-    guid: 123ad6ee7a56a1843815d171ee8726dc
+    path: Assets/LeeSiwoo/Scene/SceneTransition_FadeIn.unity
+    guid: d26c39028e548694c802eef75ee2691a
   - enabled: 1
-    path: Assets/Jinggu0/Scenes/Select Scene.unity
-    guid: 8ca8f75926d2e7d02a98be92a9e742e8
+    path: Assets/LeeSiwoo/Scene/SceneTransition_FadeOut.unity
+    guid: a2785698d66f0954b81b525ce31c77a2
+  - enabled: 1
+    path: Assets/LeeSiwoo/Scene/Stage1.unity
+    guid: 58e112e99c207ed42a95fa92993c1fea
+  - enabled: 1
+    path: Assets/LeeSiwoo/Scene/Stage2.unity
+    guid: baffb7fa036c239408927a5c50c59e1f
   m_configObjects: {}
