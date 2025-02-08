@@ -7,6 +7,7 @@ public class SetMicname : MonoBehaviour
 {
     public TextMeshProUGUI text;
     public string Micname = "Null";
+    public int Index = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,5 +18,9 @@ public class SetMicname : MonoBehaviour
         if(Micname != text.text){
             text.text = Micname;
         }
+    }
+
+    public void Onclick(){
+        PlayerPrefs.SetInt("Micidx", Index);
     }
 }

@@ -15,6 +15,7 @@ public class Microphone_setname : MonoBehaviour
             for(int i=0; i<myMic.Length; i++){
                 child = transform.GetChild(i).gameObject;
                 child.GetComponent<SetMicname>().Micname = myMic[i].ToString();
+                child.GetComponent<SetMicname>().Index = i;
             }
         }
     }
