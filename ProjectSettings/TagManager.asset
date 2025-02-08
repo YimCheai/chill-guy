@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Col
+  - SavePoint
   layers:
   - Default
   - TransparentFX
@@ -40,6 +41,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 961331603
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Element
+    uniqueID: 1162738545
+    locked: 0
+  - name: Player
+    uniqueID: 3081908343
+    locked: 0
+  - name: UI
+    uniqueID: 2873863155
     locked: 0
