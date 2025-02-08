@@ -1,23 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
+using Cinemachine;
 using UnityEngine;
-using DG.Tweening;
 
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rigid;
     [SerializeField]
     private MicInput micInput;
+    [SerializeField]
+    private CinemachineVirtualCamera cinemachine;
+
+    private Animator animator;
 
     float _ref = 0.05f;
 
     private bool isJump = false;
 
-    private bool GameDone = false;
+    [HideInInspector]
+    public bool GameDone = false;
     void Start()
     {
+        animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
     }
 
@@ -30,21 +32,24 @@ public class PlayerMovement : MonoBehaviour
     void InputHandler()
     {
         float decibel = micInput.GetDecibel(_ref);
-        if (decibel >= 12 && decibel < 18)
+        if (decibel >= 10 && decibel < 20)
         {
-            rigid.AddForce(Vector3.right, ForceMode2D.Force);
+            animator.SetBool("isMove", true);
+            rigid.AddForce(Vector3.right * 1.1f, ForceMode2D.Force); return;
         }
-        else if(decibel >= 18 &&  decibel < 22 && !isJump)
+        else if(decibel >= 20 &&  decibel < 25 && !isJump)
         {
-            rigid.AddForce(Vector3.up * 10, ForceMode2D.Impulse);
+            rigid.AddForce(Vector3.up * 9, ForceMode2D.Impulse);
             isJump = true;
+            return;
         }
         else if(decibel >= 25)
         {
-            Debug.Log("Death");
-            GameDone = true;
+            Death();
+            return;
         }
-    }
+		animator.SetBool("isMove", false);
+	}
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
         if (collision.gameObject.CompareTag("Ground"))
@@ -52,4 +57,10 @@ public class PlayerMovement : MonoBehaviour
             isJump = false;
         }
 	}
+    public void Death()
+    {
+        Debug.Log("Death");
+        GameDone = true;
+        cinemachine.Follow = null;
+    }
 }
