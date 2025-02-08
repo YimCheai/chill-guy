@@ -22,6 +22,6 @@ public class SetMicname : MonoBehaviour
 
     public void Onclick(){
         PlayerPrefs.SetInt("Micidx", Index);
-        transform.parent.transform.parent.transform.parent.gameObject.SetActive(false);
+        transform.parent.parent.parent.gameObject.SetActive(false);
     }
 }
