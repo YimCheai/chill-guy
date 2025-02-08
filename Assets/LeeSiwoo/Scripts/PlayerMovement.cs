@@ -1,5 +1,7 @@
 using Cinemachine;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -66,16 +68,24 @@ public class PlayerMovement : MonoBehaviour
 	}
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-        if (collision.CompareTag("SavePoint"))
+        if (!GameDone)
         {
-            RespawnPos = collision.gameObject.transform.position;
-            if(PointName != collision.gameObject.name)
-            {
-                GameObject clone = Instantiate(SaveEffect, RespawnPos, Quaternion.identity);
-                Destroy(clone, 0.3f);
-                PointName = collision.gameObject.name;
-            }
-        }
+			if (collision.CompareTag("SavePoint"))
+			{
+				RespawnPos = collision.gameObject.transform.position;
+				if (PointName != collision.gameObject.name)
+				{
+					GameObject clone = Instantiate(SaveEffect, RespawnPos, Quaternion.identity);
+					Destroy(clone, 0.8f);
+					PointName = collision.gameObject.name;
+				}
+			}
+			else if (collision.gameObject.name.Equals("EndCollider"))
+			{
+				PlayerMovement pm = GetComponent<PlayerMovement>();
+				StartCoroutine(_SceneManager.instance.NextSceneChange(_SceneManager.instance.GetCurrentStage() + 1, pm));
+			}
+		}
 	}
 	public void Death()
     {
